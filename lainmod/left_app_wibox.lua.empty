@@ -1,0 +1,17 @@
+
+local naughty  	    = require("naughty")
+local wibox         = require("wibox")
+
+local function factory(args)
+    local  left_app_wibox = { }
+	
+    naughty.notify {
+	text = "left_app_wibox factory",
+	timeout = 0
+    }	
+
+    return left_app_wibox
+end
+
+return factory
+
