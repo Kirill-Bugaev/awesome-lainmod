@@ -1,6 +1,7 @@
 # lainmod
 Modified lua Lain library for Awesome WM
-It is used in some my repositories.
+
+It is required for some my Awesome WM projects.
 Original Lain library is [here][lcpz/lain].
 
 ## Installation
