@@ -1,4 +1,4 @@
-# lainmod
+# awesome-lainmod
 Modified lua Lain library for Awesome WM
 
 It is required for some my Awesome WM projects.
