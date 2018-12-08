@@ -99,7 +99,7 @@ local function factory(args)
 		if mailcount == nil then
 		    mailcount = 0
 		else
-		    mailcount = mailcount - 2
+		    mailcount = tonumber(mailcount) - 2
 		end
 	    else
 		mailcount = "N/A"
@@ -108,7 +108,11 @@ local function factory(args)
             settings(widget, mailcount)
 
 	    if mailcount ~= "N/A" then
-		if notify == "on" and mailcount >= 1 and mailcount > helpers.get_map(mail) then
+		previous_mailcount = helpers.get_map(mail)
+		if previous_mailcount == "N/A" then
+		    previous_mailcount = 0
+		end
+		if notify == "on" and mailcount >= 1 and mailcount > previous_mailcount then
 		    if mailcount == 1 then
 			nt = mail .. " has one new message"
 		    else
