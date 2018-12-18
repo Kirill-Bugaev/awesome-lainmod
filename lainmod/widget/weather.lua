@@ -161,7 +161,7 @@ local function factory(args)
 		weather.current_weather = string.format("<b>City:</b> ") .. weather_now["name"] .. "\n"
 		weather.current_weather = weather.current_weather .. string.format("<b>Conditions:</b> ") .. weather_now["weather"][1]["description"] .."\n"
 		weather.current_weather = weather.current_weather .. string.format("<b>Temperature:</b> ") .. weather_now["main"]["temp"] .. "°C" .."\n"
-		weather.current_weather = weather.current_weather .. string.format("<b>Wind:</b> ") ..  math.floor(weather_now["wind"]["speed"]*1000/3600+0.5) .. "mps "
+		weather.current_weather = weather.current_weather .. string.format("<b>Wind:</b> ") ..  math.floor(weather_now["wind"]["speed"]+0.5) .. "mps "
 		if weather_now["wind"]["deg"] ~= nil then
 		    weather.current_weather = weather.current_weather .. degrees_to_direction(weather_now["wind"]["deg"])
 		end
