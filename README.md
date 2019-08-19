@@ -5,7 +5,7 @@ It is required for some my Awesome WM projects.
 Original Lain library is [here][lcpz/lain].
 
 ## Installation
-*awesome-lainmod requires [awesome-base16][] color schemes suite which are separately distributed. You need to install it first.*
+*awesome-lainmod requires [awesome-base16][] color schemes suite which is separately distributed. You need to install it first.*
 
 Clone current repository to temporary directory with `git clone https://github.com/Kirill-Bugaev/awesome-lainmod.git`.
 Copy `lainmod` directory from `awesome-lainmod` directory to your Awesome WM configuration directory (`~/.config/awesome` by default).
