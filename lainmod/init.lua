@@ -9,8 +9,7 @@
 --]]
 
 return {
-    layout 	   = require("lainmod.layout"),
-    util   	   = require("lainmod.util"),
-    widget 	   = require("lainmod.widget"),
-    left_app_wibox = require("lainmod.left_app_wibox"),
+    layout    = require("lainmod.layout"),
+    util      = require("lainmod.util"),
+    widget    = require("lainmod.widget"),
 }

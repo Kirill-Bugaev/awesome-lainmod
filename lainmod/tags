@@ -1,0 +1,31 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+create_leftwibox_widget	/home/user1/.config/awesome/lainmod/left_app_wibox.lua	/^    local function create_leftwibox_widget (widget_args)$/;"	f	language:Lua
+factory	/home/user1/.config/awesome/lainmod/left_app_wibox.lua	/^local function factory(args)$/;"	f	language:Lua
+helpers.async	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.async(cmd, callback)$/;"	f	language:Lua
+helpers.async_with_shell	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.async_with_shell(cmd, callback)$/;"	f	language:Lua
+helpers.deep_table_copy	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.deep_table_copy(orig, copies)$/;"	f	language:Lua
+helpers.element_in_table	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.element_in_table(element, tbl)$/;"	f	language:Lua
+helpers.file_exists	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.file_exists(path)$/;"	f	language:Lua
+helpers.first_line	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.first_line(path)$/;"	f	language:Lua
+helpers.first_nonempty_line	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.first_nonempty_line(path)$/;"	f	language:Lua
+helpers.get_map	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.get_map(element)$/;"	f	language:Lua
+helpers.get_toggle_state	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.get_toggle_state(path)$/;"	f	language:Lua
+helpers.lines_from	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.lines_from(path)$/;"	f	language:Lua
+helpers.lines_from_reverse	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.lines_from_reverse(path)$/;"	f	language:Lua
+helpers.lines_match	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.lines_match(regexp, path)$/;"	f	language:Lua
+helpers.line_callback	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.line_callback(cmd, callback)$/;"	f	language:Lua
+helpers.make_single_widget	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.make_single_widget(wt, layout)$/;"	f	language:Lua
+helpers.newtimer	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.newtimer(name, timeout, fun, nostart, stoppable)$/;"	f	language:Lua
+helpers.powerset	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.powerset(s)$/;"	f	language:Lua
+helpers.rewrite_with_echo	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.rewrite_with_echo(path, str)$/;"	f	language:Lua
+helpers.set_map	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.set_map(element, value)$/;"	f	language:Lua
+helpers.set_toggle_state	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.set_toggle_state(path, state)$/;"	f	language:Lua
+helpers.shallow_table_copy	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.shallow_table_copy(orig)$/;"	f	language:Lua
+helpers.spairs	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.spairs(t)$/;"	f	language:Lua
+helpers.trivial_partition_set	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.trivial_partition_set(set)$/;"	f	language:Lua
+helpers.wrequire	/home/user1/.config/awesome/lainmod/helpers.lua	/^function helpers.wrequire(table, key)$/;"	f	language:Lua
+icon_sel	/home/user1/.config/awesome/lainmod/left_app_wibox.lua	/^	local function icon_sel (source_icon, sel_color)$/;"	f	language:Lua
+iterator	/home/user1/.config/awesome/lainmod/helpers.lua	/^						iterator = function()$/;"	f	language:Lua
+iterator	/home/user1/.config/awesome/lainmod/helpers.lua	/^	local iterator = function() return "" end$/;"	f	language:Lua
+left_app_wibox.vertical_wibox	/home/user1/.config/awesome/lainmod/left_app_wibox.lua	/^    function left_app_wibox.vertical_wibox(s)$/;"	f	language:Lua
+stdout	/home/user1/.config/awesome/lainmod/helpers.lua	/^		stdout = function (line)$/;"	f	language:Lua

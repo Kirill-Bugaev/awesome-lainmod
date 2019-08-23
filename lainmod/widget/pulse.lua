@@ -14,7 +14,7 @@ local string  = { gmatch = string.gmatch,
 local type = type
 
 -- PulseAudio volume
--- lain.widget.pulse
+-- lainmod.widget.pulse
 
 local function factory(args)
     local pulse    = { widget = wibox.widget.textbox(), device = "N/A" }

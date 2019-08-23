@@ -1,6 +1,7 @@
 --[[
 
      Licensed under GNU General Public License v2
+      * (c) 2018, Kirill Bugaev
       * (c) 2013, Luca CPZ
       * (c) 2013, Rman
 
@@ -18,7 +19,7 @@ local string         = { format = string.format,
 local type, tonumber = type, tonumber
 
 -- PulseAudio volume bar
--- lain.widget.pulsebar
+-- lainmod.widget.pulsebar
 
 local function factory(args)
     local pulsebar = {
@@ -137,7 +138,7 @@ local function factory(args)
                 end
             end
 
-            int = math.modf((pulsebar._current_level / 100) * tot)
+            local int = math.modf((pulsebar._current_level / 100) * tot)
             preset.text = string.format("[%s%s]", string.rep("|", int),
                           string.rep(" ", tot - int))
 

@@ -1,6 +1,7 @@
 --[[
 
      Licensed under GNU General Public License v2
+      * (c) 2019, Kirill Bugaev
       * (c) 2013, Luca CPZ
       * (c) 2010, Adrian C. <anrxc@sysphere.org>
 
@@ -13,42 +14,50 @@ local string  = { match  = string.match,
                   format = string.format }
 
 -- ALSA volume
--- lain.widget.alsa
+-- lainmod.widget.alsa
 
 local function factory(args)
-    local alsa     = { widget = wibox.widget.textbox() }
-    local args     = args or {}
-    local timeout  = args.timeout or 5
-    local settings = args.settings or function() end
+	local args     = args or {}
+	local timeout  = args.timeout or 5
+	local settings = args.settings or function() end
 
-    alsa.cmd           = args.cmd or "amixer"
-    alsa.channel       = args.channel or "Master"
-    alsa.togglechannel = args.togglechannel
+	local alsa         = { widget = wibox.widget.textbox() }
+	alsa.cmd           = args.cmd or "amixer"
+	alsa.channel       = args.channel or "Master"
+	alsa.togglechannel = args.togglechannel
 
-    local format_cmd = string.format(shell .. " -c '" .. "%s get %s'", alsa.cmd, alsa.channel)
+	local format_cmd = string.format(shell .. " -c '" .. "%s get %s'", alsa.cmd, alsa.channel)
 
-    if alsa.togglechannel then
-        format_cmd = { shell, "-c", string.format("%s get %s; %s get %s",
-        alsa.cmd, alsa.channel, alsa.cmd, alsa.togglechannel) }
-    end
+	if alsa.togglechannel then
+		format_cmd = {
+			shell,
+			"-c",
+			string.format("%s get %s; %s get %s",
+				alsa.cmd,
+				alsa.channel,
+				alsa.cmd,
+				alsa.togglechannel
+			)
+		}
+	end
 
-    alsa.last = {}
+	alsa.last = {}
 
-    function alsa.update()
-        helpers.async(format_cmd, function(mixer)
-            local l,s = string.match(mixer, "([%d]+)%%.*%[([%l]*)")
---            if alsa.last.level ~= l or alsa.last.status ~= s then
-                local volume_now = { level = l, status = s }
-                local widget = alsa.widget
-        	settings(widget, volume_now)
-        	alsa.last = volume_now
---            end
-        end)
-    end
+	function alsa.update()
+		helpers.async(format_cmd, function(mixer)
+			local l,s = string.match(mixer, "([%d]+)%%.*%[([%l]*)")
+			if alsa.last.level ~= l or alsa.last.status ~= s then
+				local volume_now = { level = l, status = s }
+				local widget = alsa.widget
+				settings(widget, volume_now)
+				alsa.last = volume_now
+			end
+		end)
+	end
 
-    helpers.newtimer(string.format("alsa-%s-%s", alsa.cmd, alsa.channel), timeout, alsa.update)
+	helpers.newtimer(string.format("alsa-%s-%s", alsa.cmd, alsa.channel), timeout, alsa.update)
 
-    return alsa
+	return alsa
 end
 
 return factory

@@ -1,6 +1,7 @@
 --[[
 
      Licensed under GNU General Public License v2
+      * (c) 2019, Kirill Bugaev
       * (c) 2013, Luca CPZ
       * (c) 2013, Rman
 
@@ -17,7 +18,7 @@ local string         = { format = string.format,
 local type, tonumber = type, tonumber
 
 -- ALSA volume bar
--- lain.widget.alsabar
+-- lainmod.widget.alsabar
 
 local function factory(args)
     local alsabar = {
@@ -127,7 +128,7 @@ local function factory(args)
                 end
             end
 
-            int = math.modf((alsabar._current_level / 100) * tot)
+            local int = math.modf((alsabar._current_level / 100) * tot)
             preset.text = string.format("[%s%s]", string.rep("|", int),
                           string.rep(" ", tot - int))
 
