@@ -7,6 +7,7 @@
 ]]
 local lfs = require "lfs"
 local script_location = (debug.getinfo(1,"S").source:sub(2)):match("(.*/)")
+--local script_location = "/home/user1/.config/awesome/lainmod/util/"
 lfs.chdir(script_location)
 
 local imap = require "imap"

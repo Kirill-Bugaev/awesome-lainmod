@@ -18,7 +18,7 @@ local function factory(args)
 	local settings  = args.settings or function() end
 
 	local function update()
-		local cmd = "systemctl status smb"
+		local cmd = "pidof smbd"
 		helpers.async(cmd, function(_, exit_code)
 			settings(smb.widget, exit_code)
 		end)

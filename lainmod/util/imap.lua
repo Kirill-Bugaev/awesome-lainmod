@@ -7,6 +7,7 @@
 
 local socket    = require "socket"
 local base64    = require "ee5_base64"
+local utfhelper = require "utfhelper"
 
 -- generates tokens for IMAP conversations
 local function tokgen()
@@ -37,7 +38,7 @@ end
 local function parsebase64(inp)
 	local b64pre  = "=?UTF-8?B?"
 	local b64post = "?="
-	local pat     = "=%?[uU][tT][fF]%-8%?B%?[^%?]*[^=]*%?="
+	local pat     = "=%?[uU][tT][fF]%-8%?[Bb]%?[^%?]*[^=]*%?="
 
 	local out = ""
 	local b   = false
@@ -50,6 +51,51 @@ local function parsebase64(inp)
 	end
 	out = out .. inp
 	return out, b
+end
+
+-- decode Q-words string
+local function decodeqw(inp)
+	local t = {}
+	local qw = ""
+	local ci = 0
+	for c in inp:gmatch(".") do
+		if c == "=" then
+			qw = ""
+			ci = 1
+		elseif ci == 1 then
+			qw = c
+			ci = ci + 1
+		elseif ci == 2 then
+			qw = qw .. c
+			table.insert(t, tonumber(qw, 16))
+			ci = 0
+		else
+			table.insert(t, c:byte())
+		end
+	end
+	t = utfhelper.utf8_to_utf32(t)
+	local out = ""
+	for _,v in pairs(t) do
+		out = out .. utf8.char(v)
+	end
+	return out
+end
+
+local function parseqwords(inp)
+	local qpre  = "=?UTF-8?Q?"
+	local qpost = "?="
+	local pat   = "=%?[uU][tT][fF]%-8%?[Qq]%?[^%?]*[^=]*%?="
+	local out = ""
+	local q   = false
+	for qline in inp:gmatch(pat) do
+		q = true
+		local s,e = inp:find(pat)
+		qline = qline:sub(qpre:len() + 1, qline:len() - qpost:len())
+		out = out .. inp:sub(1, s - 1) .. decodeqw(qline)
+		inp = inp:sub(e + 1)
+	end
+	out = out .. inp
+	return out, q
 end
 
 -- parse FETCH response
@@ -67,11 +113,13 @@ local function parsefetch(inp)
 				local field = inp[i]:match("%a+:")
 				if field then
 					field = field:sub(1, field:len() - 1)
-					msg[field] = parsebase64(inp[i]:sub(field:len() + 3))
+					msg[field] = parseqwords(parsebase64(inp[i]:sub(field:len() + 3)))
 					while i <= #inp - 1 and inp[i + 1]:sub(1, 1) == " " do
 						i = i + 1
 						local s, b = parsebase64(inp[i]:sub(2))
-						if not b then
+						local q
+						s, q = parseqwords(s)
+						if not b or not q then
 							msg[field] = msg[field] .. " "
 						end
 						msg[field] = msg[field] .. s

@@ -19,7 +19,7 @@ local function factory(args)
 	local settings  = args.settings or function() end
 
 	local function update()
-		local cmd = "/usr/lib/initcpio/busybox pidof qemu-system-x86_64"
+		local cmd = "pidof qemu-system-x86_64"
 		helpers.async(cmd, function(_, exit_code)
 			settings(qemu.widget, exit_code)
 		end)

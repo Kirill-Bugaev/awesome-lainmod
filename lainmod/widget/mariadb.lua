@@ -54,7 +54,7 @@ local function factory(args)
 	end
 
 	local function update()
-		local cmd = "systemctl status mariadb"
+		local cmd = "pidof mysqld"
 		helpers.async(cmd, function(_, exit_code)
 			settings(mariadb.widget, exit_code)
 		end)

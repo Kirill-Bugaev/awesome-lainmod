@@ -18,7 +18,7 @@ local function factory(args)
 	local settings  = args.settings or function() end
 
 	local function update()
-		local cmd = "systemctl status php-fpm"
+		local cmd = "pidof php-fpm"
 		helpers.async(cmd, function(_, exit_code)
 			settings(phpfpm.widget, exit_code)
 		end)

@@ -54,7 +54,7 @@ local function factory(args)
 	end
 
 	local function update()
-		local cmd = "systemctl status httpd"
+		local cmd = "pidof httpd"
 		helpers.async(cmd, function(_, exit_code)
 			settings(apache.widget, exit_code)
 		end)
