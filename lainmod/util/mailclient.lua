@@ -31,7 +31,7 @@ local pass      = arg[6]
 local mailbox   = arg[7]
 local count     = arg[8]
 
-local datepat = "^[%a]+, [%d]+ [%a]+ [%d]+ [%d]+:[%d]+"
+local datepat = "^[%a]+,%s+[%d]+%s+[%a]+%s+[%d]+%s+[%d]+:[%d]+"
 
 local conn = imap(host, port, tls_params, tonumber(timeout))
 conn:login(user, pass)
